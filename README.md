@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website SMKS Hikmah Yapis Jayapura
 
-## Getting Started
+Website profil sekolah dengan Next.js 15, GSAP, dan shadcn/ui. Tema hijau dan putih, memakai foto dan isi dari website lama sekolah.
 
-First, run the development server:
+## Menjalankan
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build produksi
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Mengubah isi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Semua teks, nama guru, jurusan, foto kegiatan, dan kontak ada di `lib/data.ts`. Ubah di sana, bukan di komponen.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Foto ada di `public/images/` (`sekolah/`, `kegiatan/`, `guru/`, `siswa/`).
+- Guru tanpa foto otomatis tampil dengan inisial nama. Tambahkan `foto` di `lib/data.ts` jika fotonya sudah ada.
+- Jadwal dan syarat PPDB belum dicantumkan karena tidak ada di website lama.
 
-## Learn More
+## Struktur
 
-To learn more about Next.js, take a look at the following resources:
+| Lokasi | Isi |
+|---|---|
+| `app/page.tsx` | Urutan bagian halaman |
+| `components/site/` | Bagian halaman (header, hero, profil, jurusan, kegiatan, guru, PPDB, kontak, footer) |
+| `components/site/gerak.tsx` | Semua animasi GSAP |
+| `components/ui/` | Komponen shadcn/ui |
+| `DESIGN.md` | Arah desain: palet, tipografi, motif, alasan setiap keputusan |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Formulir PPDB
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Website ini tidak punya server untuk menyimpan data. Formulir PPDB memeriksa isian, lalu membuka aplikasi email pengunjung dengan pesan yang sudah terisi ke alamat email sekolah.
 
-## Deploy on Vercel
+## antislop
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Skill [antislop](https://github.com/miqdadbadjuber/anti-slop) (v3.2.26) terpasang di `.claude/skills/` dan dirujuk dari `CLAUDE.md`, sehingga agen AI yang mengerjakan repo ini memakai aturannya. Untuk memperbarui: `npx antislop-ai --update`.
